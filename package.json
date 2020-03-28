@@ -1,0 +1,30 @@
+{
+  "name": "collection-codegen-postman",
+  "version": "1.0.0",
+  "description": "Code generator utility for postman collections which generates a sdk for entire collection",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/someshkoli/postman-collection-codegen.git"
+  },
+  "keywords": [
+    "codegen",
+    "postman"
+  ],
+  "author": "Somesh koli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/someshkoli/postman-collection-codegen/issues"
+  },
+  "homepage": "https://github.com/someshkoli/postman-collection-codegen#readme",
+  "dependencies": {
+    "postman-collection": "^3.6.0"
+  }
+}
