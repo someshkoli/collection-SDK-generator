@@ -1,4 +1,5 @@
 const convert = require('../../codegen').nodejsRequest.convert,
+    getFunctionSnippet = require('./util').generateFunctionSnippet,
     options = [{
         indentType: 'Tab',
         indentCount: 4,
@@ -7,20 +8,18 @@ const convert = require('../../codegen').nodejsRequest.convert,
         requestTimeout: 0
     }];
 
-module.exports = (collection, option = options,callback) => {
+module.exports = (collection, option = options) => {
     var requestList = collection.items.members;
-
-    snippet = "const request = require(request);\n";
-    snippet = "module.exports = {\n\t";
+    snippet = ''
+    snippet += "const request = require(request);\n";
+    snippet += "module.exports = {\n\t";
     requestList.forEach(item => {
-        convert(item.request, options, function (err, snippet) {
+        var snippets_total = convert(item.request, options, function (err, request) {
             if (err) {
-                // console.log(err)
+                console.log(err)
             }
-            console.log(snippet)
+            snippet += request + '\n';
         });
     })
-    console.table(snippets)
-    // callback(null,snippets)
-    return snippets;
+    return snippet;
 }
