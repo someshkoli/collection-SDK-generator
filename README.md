@@ -1,7 +1,7 @@
 # postman-collection-codegen
 
 ### Introduction
-- A SDK generator for postman collections. Currently in  testing phase of the design.
+- A SDK generator for postman collections. Generates entire SDK with all the requests inside the postman collection powered with postman-code-generator. 
 
 ### Installation
 
@@ -13,5 +13,8 @@
 
 #### Libraries used:
 
+#### Supported code generators
+ - nodejs-requests
+ - dart
 
 ### Usage:

@@ -1,0 +1,14 @@
+{
+  "name": "sdk-generator-nodejs-requests",
+  "version": "1.0.0",
+  "description": "A part of sdk generator for postman collections. Generates sdk for nodejs-request library using postman collections and postman codegenerator.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Somesh koli",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
+}

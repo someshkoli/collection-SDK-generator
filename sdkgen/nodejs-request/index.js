@@ -11,21 +11,21 @@ const convert = require('../../codegen').nodejsRequest.convert,
 
 module.exports = (collection, option = options, callback) => {
     var requestList = collection.items.members;
-        package_snippet = '',
+    package_snippet = '',
         functionSnippets = [];
-    package_snippet += "const request = require(request);\n";
+    package_snippet += "const request = require('request');\n\n";
     package_snippet += "module.exports = {\n\t";
     requestList.forEach(item => {
         convert(item.request, options, function (err, request) {
             if (err) {
                 console.log(err)
             }
-            package_snippet += getFunctionSnippet(fetchRequestLogic(request),{
-                name : item.name.split(' ').join('_')
-            });
+            package_snippet += getFunctionSnippet(fetchRequestLogic(request), {
+                name: item.name.split(' ').join('_') 
+            }).trim() + ',\n\n';
         });
     })
     package_snippet += '}\n';
-    callback(null,package_snippet);
+    callback(null, package_snippet);
     return package_snippet;
 }
