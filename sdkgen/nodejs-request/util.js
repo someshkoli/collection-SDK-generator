@@ -3,15 +3,17 @@ fetchImport = (snippet)=>{
 }
 
 fetchRequest = (snippet)=>{
-
+    var separator = '// -> REQUEST LOGIC <-\n'
+    var request = snippet.split(separator);
+    return request[1];
 }
 
+// todo: figure out why you aded options parameter
 generateFunctionSnippet = (request,options) =>{
     var snippet = '\n';
-    snippet += 'function_name : () => {\n';
-    snippet +=  request + '\n';
+    snippet += options.name + ' : () => {\n';
+    snippet +=  request;
     snippet += '}\n'
-
     return snippet;
 }
 

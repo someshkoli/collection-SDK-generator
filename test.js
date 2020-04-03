@@ -5,7 +5,7 @@ sdkGenerator = require('./'),
 
 const a = new sdkGenerator(__dirname + '/test/unit/fixtures/sample_collection.json', 'nodejs-request',
 	'nodejs-request');
-a.generate();
+var result = a.generate();
 // console.log(a.ping());
 var coll = new sdk.Collection({
 	"info": {
