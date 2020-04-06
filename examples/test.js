@@ -7,4 +7,5 @@ sdkGenerator = require('..'),
 const a = new sdkGenerator('/home/wolf/development/collection-codegen-postman/examples/collections/sample_collection.json', 'nodejs-request',
 	'nodejs-request');
 var result = a.generate();
-console.log(result);
+a.outputFile('./');
+// console.log(result);

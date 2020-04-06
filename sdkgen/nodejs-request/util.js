@@ -13,7 +13,7 @@ fetchRequest = (snippet)=>{
 // todo: figure out why you aded options parameter
 generateFunctionSnippet = (request,options) =>{
     var snippet = '\n';
-    snippet += `"${options.name}"` + ' : () => {\n';
+    snippet += `"${options.name}"` + ' : (body, headers) => {\n';
     snippet +=  request;
     snippet += '}\n'
     return snippet;
