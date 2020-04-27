@@ -3,7 +3,7 @@ const convert = require('../../codegen').nodejsRequest.convert;
 fetchImport = (snippet) => {
     var separator = '// -> REQUEST LOGIC <-\n'
     var request = snippet.split(separator);
-    return request[1];
+    return request[0];
 }
 
 fetchRequest = (snippet) => {
