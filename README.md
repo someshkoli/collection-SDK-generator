@@ -39,4 +39,6 @@
 
     a.outputFile('./examples/output/sample-collection');
 
+#### [More usage and outputs in /example](https://github.com/someshkoli/request-SDK-generator/tree/master/examples)
+
 
