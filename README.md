@@ -1,7 +1,7 @@
 # postman-collection-codegen
 
 ### Introduction
-- A SDK generator for postman collections. Generates entire SDK with all the requests inside the postman collection powered with postman-code-generator. This is a collection level sdk generator which generates snippets for collections having multi-level arrangement. the
+- A SDK generator for postman collections. Generates entire SDK with all the requests inside the postman collection powered with postman-code-generator. This is a collection level sdk generator which generates snippets for collections having multi-level arrangement.
 
 ### Installation
  - ```git clone https://github.com/someshkoli/postman-collection-codegen.git```
@@ -26,12 +26,17 @@
 ### Usage:
 
     const sdkGenerator = require('sdk_generator_root');
-    
+
     /*create a new sdk generator instance by providing collection and sdkgenerator variant as parameters. */
+
     const instance = new sdkGenerator(testCollectionPath, 'nodejs-request');
+
     /* to get generated sdk use generate() method. This returns the generated sdk in string format. */
+
     var result = instance.generate();
+
     /* to output the sdk to a file use outputFile(file_name) method */  
+
     a.outputFile('./examples/output/sample-collection');
 
 
