@@ -3,7 +3,7 @@ const request = require('request');
 var requestList = {
     /*
         Description:
-        HTTP has multiple request \"verbs\", such as `GET`, `PUT`, `POST`, `DELETE`,
+        HTTP has multiple request "verbs", such as `GET`, `PUT`, `POST`, `DELETE`,
         `PATCH`, `HEAD`, etc.
         An HTTP Method (verb) defines how a request should be interpreted by a server.
         The endpoints in this section demonstrate various HTTP Verbs. Postman supports 
@@ -19,9 +19,12 @@ var requestList = {
             Description:
             The HTTP `GET` request method is meant to retrieve data from a server. The data
             is identified by a unique URI (Uniform Resource Identifier). 
-            A `GET` request can pass parameters to the server using \"Query String \nParameters\".For example, in the following request,
+            A `GET` request can pass parameters to the server using "Query String 
+            Parameters".For example, in the following request,
             
-            > http://example.com/hi/there?hand=wave\n\nThe parameter \"hand\" has the value \"wave\".
+            > http://example.com/hi/there?hand=wave
+            
+            The parameter "hand" has the value "wave".
             
             This endpoint echoes the HTTP headers, request parameters and the complete
             URI requested.
@@ -44,13 +47,14 @@ var requestList = {
             What data is returned depends on the implementation
             of the server.
             
-            A `POST` request can pass parameters to the server using \"Query String \nParameters\", as well as the Request Body. For example, in the following request,
+            A `POST` request can pass parameters to the server using "Query String 
+            Parameters", as well as the Request Body. For example, in the following request,
             
             > POST /hi/there?hand=wave
             
             > <request-body>
             
-            The parameter \"hand\" has the value \"wave\".The request body can be in multiple
+            The parameter "hand" has the value "wave".The request body can be in multiple
             formats. These formats are defined by the MIME type of the request.The MIME 
             Type can be set using the ``Content-Type`` HTTP header. The most commonly used 
             MIME types are:
@@ -81,14 +85,14 @@ var requestList = {
             (and elicit a response).What data is returned depends on the implementation
             of the server.
             
-            A `POST` request can pass parameters to the server using \"Query String 
-            Parameters\", as well as the Request Body.For example, in the following request,
+            A `POST` request can pass parameters to the server using "Query String 
+            Parameters", as well as the Request Body.For example, in the following request,
             
             > POST /hi/there?hand=wave
             
             > <request-body>
             
-            The parameter \"hand\" has the value \"wave\". The request body can be in multiple
+            The parameter "hand" has the value "wave". The request body can be in multiple
             formats. These formats are defined by the MIME type of the request. 
             The MIME Type can be set using the ``Content-Type`` HTTP header. 
             The most commonly used MIME types are:
@@ -151,12 +155,12 @@ var requestList = {
         The HTTP `GET` request method is meant to retrieve data from a server.The data
         is identified by a unique URI (Uniform Resource Identifier). 
         
-        A `GET` request can pass parameters to the server using \"Query String \nParameters\".
+        A `GET` request can pass parameters to the server using "Query String Parameters".
         For example, in the following request,
         
         > http://example.com/hi/there?hand=wave
         
-        The parameter \"hand\" has the value \"wave\".
+        The parameter "hand" has the value "wave".
         This endpoint echoes the HTTP headers, request parameters and the complete URI requested.
     */
     "GET_Request 1": (body, headers) => {
@@ -176,7 +180,8 @@ var requestList = {
     Description:
     Postman Echo is service you can use to test your REST clients and make sample API calls. 
     It provides endpoints for `GET`, `POST`, `PUT`, various auth mechanisms and other utility endpoints.
-    \n\nThe documentation for the endpoints as well as example responses can be found at [https://postman-echo.com]
+    
+    The documentation for the endpoints as well as example responses can be found at [https://postman-echo.com]
     (https://postman-echo.com/?source=echo-collection-app-onboarding)
 */
 function SDKName() {
