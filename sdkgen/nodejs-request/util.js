@@ -22,7 +22,7 @@ generateFunctionSnippet = (request, options) => {
 }
 
 extractRequests = (collectionItemMember,options) => {
-    if (collectionItemMember.request) {
+if (collectionItemMember.request) {
         var snippet = '';
         convert(collectionItemMember.request, options, function (err, request) {
             if (err) {
