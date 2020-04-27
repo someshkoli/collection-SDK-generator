@@ -205,5 +205,4 @@ function SDKName() {
     }
 }
 
-console.log(new SDKName());
 module.exports = SDKName;
