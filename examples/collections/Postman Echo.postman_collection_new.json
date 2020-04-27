@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b1ca09aa-946a-40d9-bab8-bb8999669125",
+		"_postman_id": "62ed8fd2-9b48-4395-b3ae-2a15931e8c9c",
 		"name": "Postman Echo",
 		"description": "Postman Echo is service you can use to test your REST clients and make sample API calls. It provides endpoints for `GET`, `POST`, `PUT`, various auth mechanisms and other utility endpoints.\n\nThe documentation for the endpoints as well as example responses can be found at [https://postman-echo.com](https://postman-echo.com/?source=echo-collection-app-onboarding)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -228,6 +228,78 @@
 				}
 			],
 			"description": "Digest authentication protects an endpoint with a username and password without actually transmitting the password over network.\nOne has to apply a hash function (like MD5, etc) to the username and password before sending them over the network.\n\n> Username: `postman`\n>\n> Password: `password`\n\nUnlike Basic-Auth, authentication happens using two consecutive requests where the first request returns `401 Unauthorised` along with `WWW-Authenticate` header containing information that needs to be used to authenticate subsequent calls.\n\nTo know more about digest authentication, refer to the [Digest Access Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication) wikipedia article.\nThe article on [authentication helpers](https://www.getpostman.com/docs/helpers#digest-auth) elaborates how to use the same within the Postman app."
+		},
+		{
+			"name": "GET Request 1 ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f7f2bab7-0830-4019-ab64-13b8ecc506e7",
+						"exec": [
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"response body has json with request queries\", function () {",
+							"    pm.response.to.have.jsonBody('args.foo1', 'bar1');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d17cf8ea-b409-4c33-ba30-f35beda02916",
+						"exec": [
+							"let repoLinks = [];",
+							"let randomArray = [{",
+							"    \"hello\": \"helo\"",
+							"},",
+							"{",
+							"    \"hello\": \"heello\"",
+							"}",
+							"",
+							"]",
+							"",
+							"randomArray.forEach((element) => {",
+							"    repoLinks.push(element);",
+							"});",
+							"",
+							"var e = JSON.parse(repoLinks);",
+							"pm.environment.set(\"variable_key\", e);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://postman-echo.com/get?foo1=bar1&foo2={{variable_key}}",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"get"
+					],
+					"query": [
+						{
+							"key": "foo1",
+							"value": "bar1"
+						},
+						{
+							"key": "foo2",
+							"value": "{{variable_key}}"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

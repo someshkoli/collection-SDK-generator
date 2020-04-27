@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/examples/test.js"
+            "program": "${workspaceFolder}/examples/module tests/nested_collecton.js"
         }
     ]
 }

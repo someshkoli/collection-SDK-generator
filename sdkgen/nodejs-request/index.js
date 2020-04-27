@@ -1,6 +1,8 @@
 const convert = require('../../codegen').nodejsRequest.convert,
     getFunctionSnippet = require('./util').generateFunctionSnippet,
     fetchRequestLogic = require('./util').fetchRequest,
+    extractRequests = require('./util').extractRequests,
+
     options = [{
         indentType: 'Tab',
         indentCount: 4,
@@ -10,27 +12,24 @@ const convert = require('../../codegen').nodejsRequest.convert,
     }];
 
 module.exports = (collection, option = options, callback) => {
-    var requestList = collection.items.members,
+    var requestMembers = collection.items.members,
         package_snippet = '',
         functionSnippets = [];
     package_snippet += "const request = require('request');\n\n";
-    package_snippet += "module.exports = {\n\t";
-    requestList.forEach(item => {
-        convert(item.request, options, function (err, request) {
-            if (err) {
-                console.log(err)
-            }
-            // console.log(functionSnippets , "asdasd");
-            // functionSnippets.push(getFunctionSnippet(fetchRequestLogic(request), {
-            //     name: item.name.split(' ').join('_')
-            // }).trim());
-            // package_snippet += functionSnippets.join(',\n\n')
-            package_snippet += getFunctionSnippet(fetchRequestLogic(request), {
-                name: item.name.split(' ').join('_')
-            }).trim() + ',\n\n';
-        });
+    package_snippet += "var requestList = {\n\t";
+    requestMembers.forEach(item => {
+        package_snippet += extractRequests(item,options);
     })
     package_snippet += '}\n';
+    package_snippet += 'function SDKName() {\n';
+    // add variable extraction func here
+    package_snippet += '\tthis.requests = requestList;\n';
+    package_snippet += '\tSDKName.prototype.setEnv = (key, value) => {\n';
+    package_snippet += '\t\t\tthis.variables[key] = value;\n';
+    package_snippet += '\t\t}\n';
+    package_snippet += '\t}\n';
+    package_snippet += '\n';
+    package_snippet += 'module.exports = SDKName;';
     callback(null, package_snippet);
     return package_snippet;
 }
