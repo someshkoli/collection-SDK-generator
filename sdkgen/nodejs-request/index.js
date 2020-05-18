@@ -11,7 +11,7 @@ const convert = require('../../codegen').nodejsRequest.convert,
         requestTimeout: 0
     }];
 
-module.exports = (collection, option = options, callback) => {
+module.exports = (collection, variables,option = options, callback) => {
     var requestMembers = collection.items.members,
         package_snippet = '',
         functionSnippets = [];
@@ -24,6 +24,11 @@ module.exports = (collection, option = options, callback) => {
     package_snippet += 'function SDKName() {\n';
     // add variable extraction func here
     package_snippet += '\tthis.requests = requestList;\n';
+    package_snippet += '\tthis.variables = {\n';
+    variables.values.forEach(item =>{
+        package_snippet += `\t\t${item.key}: '${item.value}',\n`
+    })
+    package_snippet += '\t}\n';
     package_snippet += '\tSDKName.prototype.setEnv = (key, value) => {\n';
     package_snippet += '\t\t\tthis.variables[key] = value;\n';
     package_snippet += '\t\t}\n';
