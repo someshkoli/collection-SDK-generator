@@ -168,6 +168,10 @@ function SDKName() {
         Description:
         Environment Varibles exported from postman.
     */
+    /**
+     * ? is this type of variable declaration alright ? as most of the env variables will be stored at the users end
+     * ? .env can be used to reference them
+     */
     this.variables = {
         // these are collection variables extracted from the collection
         ip: '128.157.9.1',
