@@ -29,10 +29,14 @@ var requestList = {
             This endpoint echoes the HTTP headers, request parameters and the complete
             URI requested.
         */
+        /**
+         * ? does get request require data parameter?
+         * ! callback function added for better response method
+         */
         "GET_Request": (data, callback) => {
             var options = {
                 'method': 'GET',
-                'url': 'https://postman-echo.com/get?foo1=bar1&foo2={{variable_key}}',
+                'url': 'https://postman-echo.com/get?foo1=bar1&foo2=' + SDKName.variables.var_name_2 + '',
                 'headers': {}
             };
             request(options, function (error, response) {
@@ -65,6 +69,9 @@ var requestList = {
             This endpoint echoes the HTTP headers, request parameters, the contents of
             the request body and the complete URI requested.
         */
+        /**
+         * ! callback function added
+         */
         "POST_Raw_Text": (data, callback) => {
             var options = {
                 'method': 'POST',
@@ -100,6 +107,9 @@ var requestList = {
             * `application/json`
             This endpoint echoes the HTTP headers, request parameters, the contents of the request body and the complete URI requested when data is sent as a form parameter.
         */
+        /**
+         * ! callback function added
+         */
         "POST_Form_Data": (data, callback) => {
             var options = {
                 'method': 'POST',
@@ -129,10 +139,14 @@ var requestList = {
         The parameter "hand" has the value "wave".
         This endpoint echoes the HTTP headers, request parameters and the complete URI requested.
     */
+    /**
+     * ? does get request require data parameter ?
+     * ! callback func added
+     */
     "GET_Request 1": (data, callback) => {
         var options = {
             'method': 'GET',
-            'url': 'https://postman-echo.com/get?foo1=bar1&foo2={{variable_key}}',
+            'url': 'https://postman-echo.com/get?foo1=bar1&foo2=' + SDKName.variables.var_name_1 + '',
             'headers': {}
         };
         request(options, function (error, response) {
