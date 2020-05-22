@@ -1,5 +1,5 @@
 const request = require('request');
-
+requre('dotenv').config();
 var requestList = {
     /*
         Description:
@@ -29,15 +29,14 @@ var requestList = {
             This endpoint echoes the HTTP headers, request parameters and the complete
             URI requested.
         */
-        "GET_Request": (body, headers) => {
+        "GET_Request": (data, callback) => {
             var options = {
                 'method': 'GET',
                 'url': 'https://postman-echo.com/get?foo1=bar1&foo2={{variable_key}}',
                 'headers': {}
             };
             request(options, function (error, response) {
-                if (error) throw new Error(error);
-                console.log(response.body);
+                callback(err, response);
             });
         },
         /*
@@ -66,7 +65,7 @@ var requestList = {
             This endpoint echoes the HTTP headers, request parameters, the contents of
             the request body and the complete URI requested.
         */
-        "POST_Raw_Text": (body, headers) => {
+        "POST_Raw_Text": (data, callback) => {
             var options = {
                 'method': 'POST',
                 'url': 'https://postman-echo.com/post',
@@ -101,7 +100,7 @@ var requestList = {
             * `application/json`
             This endpoint echoes the HTTP headers, request parameters, the contents of the request body and the complete URI requested when data is sent as a form parameter.
         */
-        "POST_Form_Data": (body, headers) => {
+        "POST_Form_Data": (data, callback) => {
             var options = {
                 'method': 'POST',
                 'url': 'https://postman-echo.com/post',
@@ -110,39 +109,6 @@ var requestList = {
                     'foo1': 'bar1',
                     'foo2': 'bar2'
                 }
-            };
-            request(options, function (error, response) {
-                if (error) throw new Error(error);
-                console.log(response.body);
-            });
-        },
-    },
-    /*
-        Description:
-        Digest authentication protects an endpoint with a username and password without actually transmitting the password over network.
-        One has to apply a hash function (like MD5, etc) to the username and password before sending them over the network.
-        
-        > Username: `postman`
-        > Password: `password`
-        
-        Unlike Basic-Auth, authentication happens using two consecutive requests where the first request returns `401 Unauthorised` along with `WWW-Authenticate` header containing information that needs to be used to authenticate subsequent calls.
-        
-        To know more about digest authentication, refer to the [Digest Access Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication) wikipedia article.
-        The article on [authentication helpers](https://www.getpostman.com/docs/helpers#digest-auth) elaborates how to use the same within the Postman app.
-    */
-    "Auth:_Digest": {
-        /*
-            Description:
-            Performing a simple `GET` request to this endpoint returns status code `401 Unauthorized` with `WWW-Authenticate` header containing information to successfully authenticate subsequent requests.
-            The `WWW-Authenticate` header must be processed to extract `realm` and `nonce` values to hash subsequent requests.
-            When this request is executed within Postman, the script attached with this request does the hard work of extracting realm and nonce from the header and set it as [global variables](https://www.getpostman.com/docs/environments#global-variables?source=echo-collection-app-onboarding) named `echo_digest_nonce` and `echo_digest_realm`.
-            These variables are re-used in subsequent request for seamless integration of the two requests.
-        */
-        "DigestAuth_Request": (body, headers) => {
-            var options = {
-                'method': 'GET',
-                'url': 'https://postman-echo.com/digest-auth',
-                'headers': {}
             };
             request(options, function (error, response) {
                 if (error) throw new Error(error);
@@ -163,15 +129,14 @@ var requestList = {
         The parameter "hand" has the value "wave".
         This endpoint echoes the HTTP headers, request parameters and the complete URI requested.
     */
-    "GET_Request 1": (body, headers) => {
+    "GET_Request 1": (data, callback) => {
         var options = {
             'method': 'GET',
             'url': 'https://postman-echo.com/get?foo1=bar1&foo2={{variable_key}}',
             'headers': {}
         };
         request(options, function (error, response) {
-            if (error) throw new Error(error);
-            console.log(response.body);
+            callback(err, response)
         });
     },
 };
@@ -190,16 +155,21 @@ function SDKName() {
         Environment Varibles exported from postman.
     */
     this.variables = {
+        // these are collection variables extracted from the collection
         ip: '128.157.9.1',
         port: '2222',
         url: 'google.com',
+        //these are the environment variables
+        var_name_1 : process.env('var_name_1'),
+        var_name_2 : process.env('var_name_2'),
+        var_name_3 : process.env('var_name_3'),
     }
 
     /*
         Description:
         List of requests and folders inside the collection.
     */
-    this.requests = requestList;
+    this.requests = requestList.bind(this);
 
     /*
         Description:
