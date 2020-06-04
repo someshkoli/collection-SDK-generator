@@ -25,7 +25,6 @@
   },
   "homepage": "https://github.com/someshkoli/postman-collection-codegen#readme",
   "dependencies": {
-    "dotenv": "^8.2.0",
     "lodash": "^4.17.15",
     "postman-collection": "^3.6.0",
     "request": "^2.88.2"
