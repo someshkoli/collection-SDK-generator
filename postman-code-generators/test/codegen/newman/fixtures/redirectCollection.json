@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "3ef1c00f-c58f-4604-8419-7a4931958235",
+		"name": "Redirect test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Follow Redirects",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://mockbin.org/redirect/302/1/?to=https://postman-echo.com/get",
+					"protocol": "https",
+					"host": [
+						"mockbin",
+						"org"
+					],
+					"path": [
+						"redirect",
+						"302",
+						"1",
+						""
+					],
+					"query": [
+						{
+							"key": "to",
+							"value": "https://postman-echo.com/get"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

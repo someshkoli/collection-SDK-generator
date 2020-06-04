@@ -1,4 +1,4 @@
-const convert = require('../../codegen').nodejsRequest.convert;
+const convert = require('../../postman-code-generators');
 
 fetchImport = (snippet) => {
     var separator = '// -> REQUEST LOGIC <-\n'

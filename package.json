@@ -26,7 +26,12 @@
   "homepage": "https://github.com/someshkoli/postman-collection-codegen#readme",
   "dependencies": {
     "lodash": "^4.17.15",
+    "node-fetch": "^2.6.0",
     "postman-collection": "^3.6.0",
     "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.1.0",
+    "eslint-config-google": "^0.14.0"
   }
 }
