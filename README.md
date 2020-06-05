@@ -1,7 +1,7 @@
 # postman-collection-codegen
 
 ### Introduction
-- A SDK generator for postman collections. Generates entire SDK with all the requests inside the postman collection powered with postman-code-generator. This is a collection level sdk generator which generates snippets for collections having multi-level arrangement.
+- A SDK generator for postman collections. Generates entire SDK with all the requests inside the postman collection powered with postman-code-generator. This is a collection level sdk generator which generates snippets for collections having multi-level heirarchical arrangement.
 
 ### Installation
  - ```git clone https://github.com/someshkoli/postman-collection-codegen.git```
